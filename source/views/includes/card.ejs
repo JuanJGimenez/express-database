@@ -1,0 +1,26 @@
+<li class="card">
+    <picture class="card__image">
+        <img src="/illustrations/<%= image %>" alt="">
+    </picture>
+    <article class="card__data">
+        <h2><%= name %> <span class="price">$<%= price %></span></h2>
+        <p><%= description %></p>
+        <% if (user && user.isAdmin ) { %>
+            <a href="/products/edit/<%= id %>" class="card__action link-edit">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+        <% } %>
+    </article>
+    <% if (user && !user.isAdmin) { %>
+        <form action="/add" method="post" class="card__action form-cart">
+            <input type="hidden" name="id" value="<%= id %>">
+            <button type="submit"><i class="fa-solid fa-shopping-cart"></i></button>
+        </form>
+    <% } %>
+    <% if (user && user.isAdmin ) { %>
+        <form action="/products/delete?m=DELETE" method="post" class="card__action form-delete">
+            <input type="hidden" name="product" value="<%= id %>">
+            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+        </form>
+    <% } %>
+</li>

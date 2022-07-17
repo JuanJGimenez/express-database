@@ -1,0 +1,21 @@
+<%- include ('../includes/head.ejs')  %> 
+<body>
+    <%- include ('../includes/header.ejs')  %> 
+    <form action="/users/register" method="post" id="register" enctype="multipart/form-data">
+        <input type="text" name="username" autocomplete="off" placeholder="Username" value="<%= locals.oldData ? oldData.username : null %>">
+        <% if (locals.errors && errors.username) { %>
+            <p class="msg-error"> <%= errors.username.msg %> </p>
+        <% } %>
+        <input type="password" name="password" autocomplete="off"  placeholder="Password" value="<%= locals.oldData ? oldData.password : null %>">
+        <% if (locals.errors && errors.password) { %>
+            <p class="msg-error"> <%= errors.password.msg %> </p>
+        <% } %>
+        <label for="avatar"><i class="fa-solid fa-image"></i></label>
+        <input type="file" name="avatar" id="avatar">
+        <% if (locals.errors && errors.avatar) { %>
+            <p class="msg-error"> <%= errors.avatar.msg %> </p>
+        <% } %>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

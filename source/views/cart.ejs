@@ -1,0 +1,16 @@
+<%- include ('./includes/head.ejs')  %> 
+<body>
+    <%- include ('./includes/header.ejs')  %> 
+    <% if (cart && cart.length > 0) { %>
+        <ul id="cart">
+            <% cart.forEach(item => { %>
+                <%- include ('./includes/item.ejs',item)  %> 
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <article>
+            <h2>Don't have items in cart</h2>
+        </article>
+    <% } %>
+</body>
+</html>

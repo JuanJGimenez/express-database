@@ -1,0 +1,82 @@
+@import url('./utils/base.css');
+@import url('./utils/header.css');
+
+#cart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    box-shadow: .05rem .05rem .1rem .01rem rgb(48, 36, 219);
+    position: relative;
+}
+.card__image{
+    height: 25vh;
+}
+.card__data{
+    flex-basis: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card__data h2{
+ flex-basis: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.card__action{
+    position: absolute;
+}
+.cart-add{
+    top: .5rem;
+    right: .5rem;
+}
+.cart-remove{
+    top: .5rem;
+    left: .5rem;
+}
+.cart-minus{
+    top: .5rem;
+    right: 3rem;
+}
+
+.cart-minus button {
+    background-color: snow ;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: hsl(348, 72%, 48%);
+    box-shadow: 0 0 .25rem 0 rgb(16,16,16)
+}
+
+.cart-add button {
+    background-color: hsl(240, 72%, 48%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: snow;
+}
+
+.cart-remove button {
+    background-color: hsl(348, 72%, 48%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: snow;
+}

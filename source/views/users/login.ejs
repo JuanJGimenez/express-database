@@ -1,0 +1,16 @@
+<%- include ('../includes/head.ejs')  %> 
+<body>
+    <%- include ('../includes/header.ejs')  %> 
+    <form action="/users/access" method="post" id="login">
+        <input type="text" name="username" autocomplete="off" placeholder="Username" value="<%= locals.oldData ? oldData.username : null %>">
+        <% if (locals.errors && errors.username) { %>
+            <p class="msg-error"> <%= errors.username.msg %> </p>
+        <% } %>
+        <input type="password" name="password" autocomplete="off"  placeholder="Password" value="<%= locals.oldData ? oldData.password : null %>">
+        <% if (locals.errors && errors.password) { %>
+            <p class="msg-error"> <%= errors.password.msg %> </p>
+        <% } %>
+        <button type="submit">Access</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "evirgilio@dh.com",
+    "password": "$2a$10$iMxCnZyaCEX9EFLONed6feQg4OAfbdbr0AeZeZQZmYm.v9V4OdcYy",
+    "avatar": "avatar_12.jpg",
+    "isAdmin": true
+  },
+  {
+    "id": 2,
+    "username": "dani@gmail.com",
+    "password": "$2a$10$iMxCnZyaCEX9EFLONed6feQg4OAfbdbr0AeZeZQZmYm.v9V4OdcYy",
+    "image": "avatar_50.jpg",
+    "isAdmin": false
+  },
+  {
+    "id": 3,
+    "username": "edu@gmail.com",
+    "password": "$2a$10$HZc59cfcr4.AI.O/xfa64uZTDTRGCUROa3exSsD16dyBqgDMhTqPq",
+    "avatar": "avatar-1658099908921.png",
+    "isAdmin": false
+  }
+]

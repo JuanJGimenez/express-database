@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Cat Joga",
+    "price": 1200,
+    "description": "Relax! The cats are good for yoga",
+    "image": "undraw_11.png"
+  },
+  {
+    "id": 2,
+    "name": "Dog Gammer",
+    "price": 2400,
+    "description": "Enjoy! Running in the park at dog",
+    "image": "undraw_58.png"
+  },
+  {
+    "id": 3,
+    "name": "Dog Walking",
+    "price": 4000,
+    "description": "socialize ! Join others pet owners",
+    "image": "undraw_61.png"
+  },
+  {
+    "id": 4,
+    "name": "Fish Swiming",
+    "price": 2000,
+    "description": "Crazy ! Keep an eye on them",
+    "image": "undraw_88.png"
+  }
+]
