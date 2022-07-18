@@ -20,7 +20,7 @@ const usersController = {
     }
     req.body.password = hashSync(req.body.password,10)
     req.body.avatar = req.files[0].filename;
-    req.body.isAdmin = String(req.data.username).toLowerCase().includes('@dh')
+    req.body.isAdmin = String(req.body.username).toLowerCase().includes('@dh')
     await User.create(req.body)
     return res.redirect(`/users/login`)
   },
