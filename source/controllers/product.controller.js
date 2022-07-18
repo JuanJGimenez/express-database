@@ -1,9 +1,9 @@
 const {validationResult} = require('express-validator')
-const {index,one,create,write} = require('../models/product.model');
+const {Product} = require('../database/models/index')
 module.exports ={
-  index: (req,res) =>{
+  index: async (req,res) =>{
 
-    let products = index();
+    let products = await Product.findAll();
 
     if(req.query && req.query.name){
       products = products.filter(product => product.name.toLowerCase().indexOf(req.query.name.toLowerCase()) > -1)
@@ -14,8 +14,8 @@ module.exports ={
       products: products
     })
   },
-  detail: (req, res) => {
-    let product = one(parseInt(req.params.id))
+  detail: async (req, res) => {
+    let product = await Product.findByPK(parseInt(req.params.id))
 
     if(!product){
       return res.redirect('/products/')
@@ -32,7 +32,7 @@ module.exports ={
       title: 'Create Product',
     })
   },
-  save: (req, res) => {
+  save: async (req, res) => {
     let validaciones = validationResult(req)
     let {errors} = validaciones
     if(errors && errors.length > 0){
@@ -44,14 +44,11 @@ module.exports ={
     }
 
     req.body.image = req.files[0].filename
-    let newProduct = create(req.body)
-    let products = index();
-    products.push(newProduct)
-    write(products)
+    await Product.create(req.body)
     return res.redirect('/products/')
   },
   edit:(req,res) => {
-    let product = one(parseInt(req.params.id))
+    let product = await Product.findByPK(parseInt(req.params.id))
     if(!product){
       return res.redirect('/products/')
     }
@@ -62,28 +59,24 @@ module.exports ={
     })
   },
   modify: (req, res) => {
-    let product = one(parseInt(req.params.id))
-    let products = index();
-    let productsModified = products.map(p =>{ 
-      if(p.id == product.id){
-        p.name =  req.body.name
-        p.description = req.body.description
-        p.price = parseInt(req.body.price)
-        p.image = req.files && req.files.length > 0 ? req.files[0].filename : p.image
-      }
-      return p 
-    });
-    write(productsModified)
-    return res.redirect('/products/detail/' + product.id)
-  },
-  destroid:(req,res) => {
-    let product = one(parseInt(req.body.product))
+    let product = await Product.findByPK(parseInt(req.params.id))
     if(!product){
       return res.redirect('/products/');
     }
-    let products = index();
-    let productsDeleted = products.filter(p => p.id !== product.id)
-    write(productsDeleted)
+    await product.update({
+      name: req.body.name,
+      description:req.body.description,
+      price:parseInt(req.body.price),
+      image:req.files && req.files.length > 0 ? req.files[0].filename : p.image,
+    });
+    return res.redirect('/products/detail/' + product.id)
+  },
+  destroid:(req,res) => {
+    let product = await Product.findByPK(parseInt(req.body.product))
+    if(!product){
+      return res.redirect('/products/');
+    }
+    await product.delete();
     return res.redirect('/products/');
   }
 }

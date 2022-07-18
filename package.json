@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "clear && nodemon source/app.js -e js,mjs,json,ejs,css",
-    "start": "node source/app.js"
+    "start": "node source/app.js",
+    "sqi": "sequelize init",
+    "sq-db": "sequelize db:drop && sequelize db:create && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all ",
+    "sq-md": "sequelize model:generate --name Product --attributes name:string,price:integer,description:text,image:text  --underscored true",
+    "sq-mg": "sequelize migration:generate --name=users --underscored=true",
+    "sq-sd": "sequelize seed:generate --name=users"
   },
   "repository": {
     "type": "git",

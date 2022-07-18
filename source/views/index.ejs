@@ -3,8 +3,8 @@
     <%- include ('./includes/header.ejs')  %> 
     <% if (products && products.length > 0) { %>
         <ul id="offerts">
-            <% products.filter(product => product.price <= 2000).forEach(product => { %>
-                <%- include ('./includes/card.ejs',product)  %> 
+            <% products.forEach(product => { %>
+                <%- include ('./includes/card.ejs',{product})  %> 
             <% }) %>
         </ul>
     <% } else { %>

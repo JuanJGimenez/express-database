@@ -1,10 +1,10 @@
 const { body } = require('express-validator');
 const {extname,resolve} = require('path')
 const {unlinkSync} = require('fs')
-const {index} = require('../models/user.model')
+const {User} = require('../database/models/index');
 const register = [
-    body('username').notEmpty().withMessage('El username no puede quedar vacío.').bail().isEmail().withMessage('El formato de username no es válido.').bail().custom(value => {
-        let users = index()
+    body('username').notEmpty().withMessage('El username no puede quedar vacío.').bail().isEmail().withMessage('El formato de username no es válido.').bail().custom(async (value) => {
+        let users = await User.findAll()
         users = users.map(u => u.username)
         if(users.includes(value)){
             throw new Error('El username ya esta registrado')

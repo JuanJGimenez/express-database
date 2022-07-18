@@ -10,7 +10,7 @@
     "id": 2,
     "username": "dani@gmail.com",
     "password": "$2a$10$iMxCnZyaCEX9EFLONed6feQg4OAfbdbr0AeZeZQZmYm.v9V4OdcYy",
-    "image": "avatar_50.jpg",
+    "avatar": "avatar_50.jpg",
     "isAdmin": false
   },
   {

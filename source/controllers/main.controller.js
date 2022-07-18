@@ -1,9 +1,11 @@
-const {index,one} = require('../models/product.model');
+const {Product} = require('../database/models/index')
 module.exports = {
-    home: (req,res) => {
+    home: async (req,res) => {
+        //return res.send(await Product.findAll())
+        let products = await Product.findAll()
         return res.render('index',{
             styles: ['index'],
-            products: index()
+            products: products
         })
     },
     cart: (req,res) => {
@@ -11,9 +13,10 @@ module.exports = {
             styles: ['cart']
         })
     },
-    add: (req,res) => {
+    add: async (req,res) => {
         
-        let product = one(req.body.id)
+        let product = await Product.findByPK(req.body.id)
+
         if(req.session.cart.find(item => item.id == product.id)){
             
             req.session.cart = req.session.cart.map(item => {

@@ -4,7 +4,7 @@
     <% if (cart && cart.length > 0) { %>
         <ul id="cart">
             <% cart.forEach(item => { %>
-                <%- include ('./includes/item.ejs',item)  %> 
+                <%- include ('./includes/item.ejs',{item})  %> 
             <% }) %>
         </ul>
     <% } else { %>

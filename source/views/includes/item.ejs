@@ -1,21 +1,21 @@
 <li class="card">
     <picture class="card__image">
-        <img src="/illustrations/<%= image %>" alt="">
+        <img src="/illustrations/<%=item.image %>" alt="">
     </picture>
     <article class="card__data">
-        <h2><%= name %> <span class="price">$<%= price %></span> <span class="subtotal">$<%= price*quantity %></span></h2>
+        <h2><%=item.name %> <span class="price">$<%= item.price %></span> <span class="subtotal">$<%=item.price * item.quantity %></span></h2>
         <form action="/set" method="post" class="card__action cart-add">
-            <input type="hidden" name="id" value="<%= id %>">
-            <input type="hidden" name="quantity" value="<%= quantity + 1 %>">
+            <input type="hidden" name="id" value="<%= item.id %>">
+            <input type="hidden" name="quantity" value="<%= item.quantity + 1 %>">
             <button type="submit"><i class="fa-solid fa-plus"></i></button>
         </form>
         <form action="/set" method="post" class="card__action cart-minus">
-            <input type="hidden" name="id" value="<%= id %>">
-            <input type="hidden" name="quantity" value="<%= quantity - 1 %>">
+            <input type="hidden" name="id" value="<%= item.id %>">
+            <input type="hidden" name="quantity" value="<%= item.quantity - 1 %>">
             <button type="submit"><i class="fa-solid fa-minus"></i></button>
         </form>
         <form action="/remove" method="post" class="card__action cart-remove">
-            <input type="hidden" name="id" value="<%= id %>">
+            <input type="hidden" name="id" value="<%= item.id %>">
             <button type="submit"><i class="fa-solid fa-trash"></i></button>
         </form>
     </article>

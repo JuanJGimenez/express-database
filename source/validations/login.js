@@ -1,11 +1,11 @@
 const { body } = require('express-validator');
-const {index} = require('../models/user.model')
+const {User} = require('../database/models/index');
 const {compareSync} = require('bcryptjs')
 
 const login = [
 // Email
-body('username').notEmpty().withMessage('El username no puede quedar vacío.').bail().isEmail().withMessage('El formato de username no es válido.').bail().custom(value => {
-  let users = index()
+body('username').notEmpty().withMessage('El username no puede quedar vacío.').bail().isEmail().withMessage('El formato de username no es válido.').bail().custom(async (value) => {
+  let users = await User.findAll()
   users = users.map(u => u.username)
   if(!users.includes(value)){
       throw new Error('El username no esta registrado')
@@ -13,9 +13,9 @@ body('username').notEmpty().withMessage('El username no puede quedar vacío.').b
   return true
 }),
 // Password
-body('password').notEmpty().withMessage('La contraseña no puede quedar vacía.').bail().isLength({min : 4}).bail().custom((value,{req})=>{
+body('password').notEmpty().withMessage('La contraseña no puede quedar vacía.').bail().isLength({min : 4}).bail().custom(async (value,{req})=>{
   let {username} = req.body
-  let users = index()
+  let users = await User.findAll()
   let user = users.find(u => u.username === username)
 
   if(!user){

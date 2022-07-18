@@ -1,5 +1,6 @@
 const {validationResult} = require('express-validator')
-const {index,create,write} = require('../models/user.model');
+const {User} = require('../database/models/index');
+const { hashSync } = require('bcryptjs');
 const usersController = {
 
   register: function(req, res){
@@ -17,12 +18,10 @@ const usersController = {
         errors: validaciones.mapped()
       });
     }
-
+    req.body.password = hashSync(req.body.password,10)
     req.body.avatar = req.files[0].filename;
-    let newUser = create(req.body)
-    let users = index();
-    users.push(newUser)
-    write(users)
+    req.body.isAdmin = String(req.data.username).toLowerCase().includes('@dh')
+    await User.create(req.body)
     return res.redirect(`/users/login`)
   },
 
@@ -42,13 +41,14 @@ const usersController = {
       });
     }
 
-    let users = index();
+    let users = await User.findAll();
     let user = users.find(u => u.username === req.body.username)
     req.session.user = user
     return res.redirect(`/?msg=Bienvenido! ${user.isAdmin? 'Administador':user.username.split('@')[0]}`)
   },
   logout: function (req,res) {
     delete req.session.user 
+    delete req.session.cart
     return res.redirect('/')
   }
 }
