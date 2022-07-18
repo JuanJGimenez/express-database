@@ -15,7 +15,7 @@ module.exports = {
     },
     add: async (req,res) => {
         
-        let product = await Product.findByPK(req.body.id)
+        let product = await Product.findByPk(req.body.id)
 
         if(req.session.cart.find(item => item.id == product.id)){
             

@@ -8,7 +8,7 @@
     <% if (products && products.length > 0) { %>
         <ul id="products">
             <% products.forEach(product => { %>
-                <%- include ('../includes/card.ejs',product)  %> 
+                <%- include ('../includes/card.ejs',{product})  %> 
             <% }) %>
         </ul>
     <% } else { %>

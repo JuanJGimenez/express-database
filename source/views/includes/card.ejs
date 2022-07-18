@@ -6,23 +6,23 @@
         <h2><%= product.name %> <span class="price">$<%= product.price %></span></h2>
         <p><%= product.description %></p>
         <% if (user && user.isAdmin ) { %>
-            <a href="/products/edit/<%= id %>" class="card__action link-edit">
+            <a href="/products/edit/<%= product.id %>" class="card__action link-edit">
                 <i class="fa-solid fa-pen"></i>
             </a>
-            <a href="/products/detail/<%= id %>" class="card__action link-show">
+            <a href="/products/detail/<%= product.id %>" class="card__action link-show">
                 <i class="fa-solid fa-eye"></i>
             </a>
         <% } %>
     </article>
     <% if (user && !user.isAdmin) { %>
         <form action="/add" method="post" class="card__action form-cart">
-            <input type="hidden" name="id" value="<%= id %>">
+            <input type="hidden" name="id" value="<%= product.id %>">
             <button type="submit"><i class="fa-solid fa-shopping-cart"></i></button>
         </form>
     <% } %>
     <% if (user && user.isAdmin ) { %>
         <form action="/products/delete?m=DELETE" method="post" class="card__action form-delete">
-            <input type="hidden" name="product" value="<%= id %>">
+            <input type="hidden" name="product" value="<%= product.id %>">
             <button type="submit"><i class="fa-solid fa-trash"></i></button>
         </form>
     <% } %>

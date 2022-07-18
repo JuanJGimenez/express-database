@@ -3,12 +3,12 @@ const {User} = require('../database/models/index');
 const { hashSync } = require('bcryptjs');
 const usersController = {
 
-  register: function(req, res){
+  register: async (req, res) => {
     return res.render('users/register',{
       styles:['users/register'],
     });
   },
-  process: function(req, res){
+  process: async (req, res) => {
     let validaciones = validationResult(req)
     let {errors} = validaciones
     if(errors && errors.length > 0){
@@ -25,12 +25,12 @@ const usersController = {
     return res.redirect(`/users/login`)
   },
 
-  login: function(req,res){
+  login: async (req,res) => {
     return res.render('users/login',{
       styles:['users/login'],
     });
   },
-  access: function(req,res){
+  access: async (req,res) => {
     let validaciones = validationResult(req)
     let {errors} = validaciones
     if(errors && errors.length > 0){

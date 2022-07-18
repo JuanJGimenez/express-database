@@ -15,7 +15,7 @@ module.exports ={
     })
   },
   detail: async (req, res) => {
-    let product = await Product.findByPK(parseInt(req.params.id))
+    let product = await Product.findByPk(parseInt(req.params.id))
 
     if(!product){
       return res.redirect('/products/')
@@ -47,8 +47,8 @@ module.exports ={
     await Product.create(req.body)
     return res.redirect('/products/')
   },
-  edit:(req,res) => {
-    let product = await Product.findByPK(parseInt(req.params.id))
+  edit: async (req,res) => {
+    let product = await Product.findByPk(parseInt(req.params.id))
     if(!product){
       return res.redirect('/products/')
     }
@@ -58,8 +58,8 @@ module.exports ={
       product:product 
     })
   },
-  modify: (req, res) => {
-    let product = await Product.findByPK(parseInt(req.params.id))
+  modify: async (req, res) => {
+    let product = await Product.findByPk(parseInt(req.params.id))
     if(!product){
       return res.redirect('/products/');
     }
@@ -71,12 +71,12 @@ module.exports ={
     });
     return res.redirect('/products/detail/' + product.id)
   },
-  destroid:(req,res) => {
-    let product = await Product.findByPK(parseInt(req.body.product))
+  destroid: async (req,res) => {
+    let product = await Product.findByPk(parseInt(req.body.product))
     if(!product){
       return res.redirect('/products/');
     }
-    await product.delete();
+    await product.destroy();
     return res.redirect('/products/');
   }
 }

@@ -1,5 +1,5 @@
 const {User} = require('../database/models/index');
-module.exports = (req,res,next) => {
+module.exports = async (req,res,next) => {
 
     let user = null;
 
