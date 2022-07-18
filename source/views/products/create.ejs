@@ -1,6 +1,16 @@
 <%- include ('../includes/head.ejs')  %> 
 <body>
     <%- include ('../includes/header.ejs')  %> 
-
+    <section>
+        <h2>New Product</h2>
+        <form action="/products/save" method="post" id="create" enctype="multipart/form-data">
+            <input type="text" name="name" id="name" placeholder="Name" autocomplete="off">
+            <input type="number" name="price" id="price" placeholder="Price" autocomplete="off">
+            <textarea name="description" id="description" autocomplete="off" placeholder="Description"></textarea>
+            <label for="image"><i class="fa-solid fa-image"></i></label>
+            <input type="file" name="undraw" id="image" autocomplete="off">
+            <button type="submit">Save</button>
+        </form>
+    </section>
 </body>
 </html>

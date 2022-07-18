@@ -76,3 +76,15 @@
     border-radius: 2rem;
     color: snow;
 }
+.link-show{
+    top: 0;
+    right: calc(50% - 1rem); 
+    background-color: hsl(240, 72%, 62%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: rgb(252,252,252);
+}

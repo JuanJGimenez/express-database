@@ -1,2 +1,79 @@
 @import url('../utils/base.css');
 @import url('../utils/header.css');
+
+section{
+    padding: 1rem;
+    justify-content: center;
+}
+section h2{
+    flex-basis: 100%;
+    border-bottom: .05rem solid rgb(48,36,240);
+    margin-bottom: 1rem;
+}
+#edit{
+    width: 75%;
+    padding: 1rem;
+    box-shadow: .05rem .05rem .1rem .01rem rgb(48,36,240);
+    gap: 1rem;
+    justify-content: end;
+    background: rgb(252,252,252);
+}
+
+#edit input{
+    flex-basis: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgb(48, 36, 219);
+    color: rgb(16,16,16)
+}
+
+#edit ::placeholder{
+    opacity: 1;
+    color: rgb(16,16,16);
+    text-transform: uppercase;
+}
+
+#edit *:focus::placeholder{
+    color: rgb(48, 36, 219)
+}
+
+#edit label[for="image"]{
+    flex-basis: 100%;
+}
+#edit label[for="image"] i{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: rgb(48, 36, 219);
+    color: snow;
+
+}
+#edit textarea{
+    flex-basis: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid rgb(48, 36, 219);
+    color: rgb(16,16,16);
+    resize: none;
+    outline: none;
+}
+.msg-error{
+    flex-basis: 100%;
+    padding: .25rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    background-color: hsl(4, 72%, 50%);
+    color:rgb(252,252,252)
+}
+
+#edit button[type="submit"]{
+    background-color: rgb(48,36,240);
+    padding: .5rem 1rem;
+    text-align: center;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    color:rgb(252,252,252)
+}

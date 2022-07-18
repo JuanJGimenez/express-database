@@ -46,6 +46,7 @@ module.exports ={
     }
     return res.render('products/edit', {
       title: 'Edit of products',
+      styles: ['products/edit'],
       product:product 
     })
   },

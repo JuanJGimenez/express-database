@@ -3,7 +3,7 @@ const router = Router();
 const { index,detail, create, save,edit,modify, destroid } = require('../controllers/product.controller');
 const multer = require('multer');
 const storage = require('../modules/storage')
-const upload = multer({storage: storage('products')});
+const upload = multer({storage: storage('../../uploads/illustrations')});
 router.get('/', index)
 router.get('/detail/:id', detail)
 router.get('/create', create)

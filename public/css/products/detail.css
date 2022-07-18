@@ -1,2 +1,74 @@
 @import url('../utils/base.css');
 @import url('../utils/header.css');
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+    box-shadow: .05rem .05rem .1rem .01rem rgb(48, 36, 219);
+    position: relative;
+}
+.card__image{
+    height: 25vh;
+}
+.card__data{
+    flex-basis: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card__data h2{
+ flex-basis: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.card__action{
+    position: absolute;
+}
+.form-cart{
+    top: .5rem;
+    right: .5rem;
+}
+.form-delete{
+    top: .5rem;
+    left: .5rem;
+}
+.link-edit{
+    top: .5rem;
+    right: .5rem; 
+    background-color: hsl(48, 72%, 62%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: rgb(16,16,16);
+}
+
+.form-cart button {
+    background-color: hsl(244, 72%, 62%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: snow;
+}
+
+.form-delete button {
+    background-color: hsl(348, 72%, 62%);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    color: snow;
+}
+
+.link-show{
+  display: none;
+}

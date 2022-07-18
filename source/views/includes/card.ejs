@@ -9,6 +9,9 @@
             <a href="/products/edit/<%= id %>" class="card__action link-edit">
                 <i class="fa-solid fa-pen"></i>
             </a>
+            <a href="/products/detail/<%= id %>" class="card__action link-show">
+                <i class="fa-solid fa-eye"></i>
+            </a>
         <% } %>
     </article>
     <% if (user && !user.isAdmin) { %>

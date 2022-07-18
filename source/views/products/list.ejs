@@ -1,6 +1,20 @@
 <%- include ('../includes/head.ejs')  %> 
 <body>
     <%- include ('../includes/header.ejs')  %> 
-
+    <form action="/products/" method="get" id="search">
+        <input type="text" name="name" autocomplete="off" placeholder="Search">
+        <button type="submit"><i class="fa-solid fa-search"></i></button>
+    </form>
+    <% if (products && products.length > 0) { %>
+        <ul id="products">
+            <% products.forEach(product => { %>
+                <%- include ('../includes/card.ejs',product)  %> 
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <article>
+            <h2>Don't have products in Database</h2>
+        </article>
+    <% } %>
 </body>
 </html>
