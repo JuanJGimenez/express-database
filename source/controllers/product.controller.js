@@ -1,3 +1,4 @@
+const {validationResult} = require('express-validator')
 const {index,one,create,write} = require('../models/product.model');
 module.exports ={
   index: (req,res) =>{
@@ -32,6 +33,16 @@ module.exports ={
     })
   },
   save: (req, res) => {
+    let validaciones = validationResult(req)
+    let {errors} = validaciones
+    if(errors && errors.length > 0){
+      return res.render('products/create',{
+        styles:['products/create'],
+        oldData: req.body,
+        errors: validaciones.mapped()
+      });
+    }
+
     req.body.image = req.files[0].filename
     let newProduct = create(req.body)
     let products = index();
